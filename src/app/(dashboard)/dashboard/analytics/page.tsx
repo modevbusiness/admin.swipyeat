@@ -400,7 +400,33 @@ export default function AnalyticsPage() {
                             </div>
                         </div>
 
-                        
+                        {/* Top Staff */}
+                        <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                            <div className="flex items-center justify-between mb-6">
+                                <h3 className="text-xl font-black text-[#1a202c]">Top Staff</h3>
+                            </div>
+                            <div className="space-y-4">
+                                {data?.topStaff?.length > 0 ? data.topStaff.map((staff: any, i: number) => (
+                                    <div key={i} className="flex items-center justify-between group">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-2xl bg-gray-100 overflow-hidden relative border border-transparent group-hover:border-[#559701] transition-all">
+                                                {staff.avatar ? <img src={staff.avatar} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center"><User className="w-4 h-4 text-gray-400" /></div>}
+                                            </div>
+                                            <div>
+                                                <p className="font-bold text-[#1a202c] text-sm">{staff.name}</p>
+                                                <p className="text-[9px] text-[#559701] font-bold uppercase tracking-widest leading-none">Rank #{i + 1}</p>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-xs font-black text-[#1a202c]">{staff.avgPrep}</p>
+                                            <p className="text-[9px] text-gray-400 font-bold uppercase leading-none">Avg Time</p>
+                                        </div>
+                                    </div>
+                                )) : (
+                                    <div className="py-4 text-center text-gray-400 text-sm italic">No staff data found</div>
+                                )}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Top Selling Items Enhanced */}
@@ -493,31 +519,78 @@ export default function AnalyticsPage() {
                         </div>
                     </div>
 
-                    {/* Top Staff */}
+                    {/* Performance Insights */}
                     <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                        <div className="flex items-center justify-between mb-6">
-                            <h3 className="text-xl font-black text-[#1a202c]">Top Staff</h3>
-                        </div>
+                        <h3 className="text-xl font-black text-[#1a202c] mb-6">Performance Insights</h3>
                         <div className="space-y-4">
-                            {data?.topStaff?.length > 0 ? data.topStaff.map((staff: any, i: number) => (
-                                <div key={i} className="flex items-center justify-between group">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-2xl bg-gray-100 overflow-hidden relative border border-transparent group-hover:border-[#559701] transition-all">
-                                            {staff.avatar ? <img src={staff.avatar} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center"><User className="w-4 h-4 text-gray-400" /></div>}
-                                        </div>
-                                        <div>
-                                            <p className="font-bold text-[#1a202c] text-sm">{staff.name}</p>
-                                            <p className="text-[9px] text-[#559701] font-bold uppercase tracking-widest leading-none">Rank #{i + 1}</p>
-                                        </div>
+                            {/* Peak Performance */}
+                            <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border border-green-200">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-10 h-10 bg-green-200 rounded-xl flex items-center justify-center">
+                                        <Flame className="w-5 h-5 text-green-700" />
                                     </div>
-                                    <div className="text-right">
-                                        <p className="text-xs font-black text-[#1a202c]">{staff.avgPrep}</p>
-                                        <p className="text-[9px] text-gray-400 font-bold uppercase leading-none">Avg Time</p>
+                                    <div>
+                                        <p className="text-xs font-bold text-green-600 uppercase">Peak Hour</p>
+                                        <p className="text-lg font-black text-green-800">
+                                            {data?.hourlyTraffic?.length > 0 
+                                                ? `${data.hourlyTraffic.reduce((max: any, t: any, i: number, arr: any[]) => t.count > (arr[max]?.count || 0) ? i : max, 0)}:00`
+                                                : 'N/A'
+                                            }
+                                        </p>
                                     </div>
                                 </div>
-                            )) : (
-                                <div className="py-4 text-center text-gray-400 text-sm italic">No staff data found</div>
-                            )}
+                            </div>
+
+                            {/* Order Velocity */}
+                            <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border border-blue-200">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-10 h-10 bg-blue-200 rounded-xl flex items-center justify-center">
+                                        <BarChart3 className="w-5 h-5 text-blue-700" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-bold text-blue-600 uppercase">Order Velocity</p>
+                                        <p className="text-lg font-black text-blue-800">
+                                            {timeframe === 'today' 
+                                                ? `${((data?.totalOrders || 0) / 24).toFixed(1)}/hr`
+                                                : `${data?.revenueTrends?.length > 0 ? Math.round((data?.totalOrders || 0) / data.revenueTrends.length) : 0}/day`
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Average Revenue */}
+                            <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl border border-purple-200">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-10 h-10 bg-purple-200 rounded-xl flex items-center justify-center">
+                                        <DollarSign className="w-5 h-5 text-purple-700" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-bold text-purple-600 uppercase">Avg Order Value</p>
+                                        <p className="text-lg font-black text-purple-800">
+                                            {data?.totalOrders > 0 
+                                                ? `${((data?.totalRevenue || 0) / data.totalOrders).toFixed(0)} DH`
+                                                : '0 DH'
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Service Quality */}
+                            <div className="p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border border-orange-200">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-10 h-10 bg-orange-200 rounded-xl flex items-center justify-center">
+                                        <CheckCircle2 className="w-5 h-5 text-orange-700" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-bold text-orange-600 uppercase">Success Rate</p>
+                                        <p className="text-lg font-black text-orange-800">
+                                            {data?.orderAccuracy || '0%'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
