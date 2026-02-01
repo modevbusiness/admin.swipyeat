@@ -871,8 +871,8 @@ export default function MenuPage() {
                 <div className="flex items-center gap-3">
                   {editingItem && (
                     <button
-                      onClick={() => handleDeleteItem(editingItem.id, editingItem.name)}
-                      className="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg flex items-center gap-2 text-sm font-medium transition-colors"
+                      disabled
+                      className="px-3 py-2 text-gray-400 bg-gray-100 rounded-lg flex items-center gap-2 text-sm font-medium cursor-not-allowed opacity-60"
                     >
                       <Trash2 className="w-4 h-4" /> Delete
                     </button>
