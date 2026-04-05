@@ -70,7 +70,7 @@ export default function PricingPage() {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-[400px]">
-                <Loader2 className="w-8 h-8 animate-spin text-[#559701]" />
+                <Loader2 className="w-8 h-8 animate-spin text-[#FF4D00]" />
             </div>
         );
     }
@@ -106,7 +106,7 @@ export default function PricingPage() {
                 </button>
                 <div className="flex items-center gap-2">
                     <span className={`text-sm font-bold ${billingCycle === 'yearly' ? 'text-[#1a202c]' : 'text-gray-400'}`}>Yearly</span>
-                    <span className="text-[10px] font-black text-[#559701] bg-[#f0f9eb] px-2 py-0.5 rounded-full border border-[#e1f3d8]">SAVE 10%</span>
+                    <span className="text-[10px] font-black text-[#FF4D00] bg-[#FFF0EB] px-2 py-0.5 rounded-full border border-[#e1f3d8]">SAVE 10%</span>
                 </div>
             </div>
 
@@ -151,11 +151,11 @@ export default function PricingPage() {
                             key={p.id}
                             className={`
                 bg-white rounded-[32px] p-10 border-2 transition-all duration-300 relative h-full flex flex-col
-                ${isPremium ? 'border-[#6fb301] shadow-2xl shadow-green-100 scale-105 z-10' : 'border-[#f2f4f7] shadow-xl shadow-gray-100/50 hover:border-gray-200'}
+                ${isPremium ? 'border-[#FF6B2B] shadow-2xl shadow-orange-100 scale-105 z-10' : 'border-[#f2f4f7] shadow-xl shadow-gray-100/50 hover:border-gray-200'}
               `}
                         >
                             {isPremium && (
-                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#6fb301] text-white text-[10px] font-black uppercase tracking-widest px-6 py-1.5 rounded-full shadow-lg">
+                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#FF6B2B] text-white text-[10px] font-black uppercase tracking-widest px-6 py-1.5 rounded-full shadow-lg">
                                     Best Value
                                 </span>
                             )}
@@ -177,7 +177,7 @@ export default function PricingPage() {
                                         <span className="text-gray-400 font-bold text-lg">/{billingCycle === 'monthly' ? 'month' : 'year'}</span>
                                     </div>
                                     {billingCycle === 'yearly' && (
-                                        <p className="text-xs font-bold text-[#6fb301] mt-1 animate-in fade-in slide-in-from-top-1 duration-300">
+                                        <p className="text-xs font-bold text-[#FF6B2B] mt-1 animate-in fade-in slide-in-from-top-1 duration-300">
                                             Billed annually — {p.price_yearly} DH/year (equivalent to {(p.price_yearly / 12).toFixed(0)} DH/month)
                                         </p>
                                     )}
@@ -189,8 +189,8 @@ export default function PricingPage() {
                                 <div className="flex-1 space-y-5 pt-4">
                                     {featuresList.map((f: any, i: number) => (
                                         <div key={i} className="flex items-center gap-3">
-                                            <div className="w-5 h-5 rounded-full bg-[#f0f9eb] flex items-center justify-center flex-shrink-0">
-                                                <CheckCircle2 className="w-3.5 h-3.5 text-[#6fb301]" />
+                                            <div className="w-5 h-5 rounded-full bg-[#FFF0EB] flex items-center justify-center flex-shrink-0">
+                                                <CheckCircle2 className="w-3.5 h-3.5 text-[#FF6B2B]" />
                                             </div>
                                             <span className="text-sm font-extrabold text-[#4a5568]">
                                                 {f.text || f}
@@ -214,7 +214,7 @@ export default function PricingPage() {
                                                 className={`
                             block text-center w-full py-4 rounded-3xl font-black transition-all text-base
                             ${isPremium
-                                                        ? "bg-[#6fb301] hover:bg-[#5a9201] text-white shadow-xl shadow-green-100"
+                                                        ? "bg-[#FF6B2B] hover:bg-[#E04400] text-white shadow-xl shadow-orange-100"
                                                         : "bg-white border-2 border-[#eaecf0] hover:bg-gray-50 text-[#4a5568]"
                                                     }
                           `}
@@ -233,7 +233,7 @@ export default function PricingPage() {
 
                                     {isPremium && (
                                         <div className="text-center space-y-2">
-                                            <div className="flex items-center justify-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-[#6fb301]">
+                                            <div className="flex items-center justify-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-[#FF6B2B]">
                                                 <CheckCircle2 className="w-3 h-3" /> Secure Payment Processing
                                             </div>
                                             <p className="text-[9px] font-black uppercase tracking-widest text-[#98a2b3]">

@@ -21,8 +21,8 @@ export default function StaffStats({ total, active, inactive }: StaffStatsProps)
             label: "Active Now",
             value: active,
             icon: UserCheck,
-            iconBg: "bg-green-50",
-            iconColor: "text-green-600",
+            iconBg: "bg-orange-50",
+            iconColor: "text-orange-600",
         },
         {
             label: "Inactive",

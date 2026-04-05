@@ -218,7 +218,7 @@ export async function getAnalyticsDataAction(restaurantId: string, timeframe: 't
                             name: categoryName,
                             value: item.quantity,
                             sales: item.quantity * item.unit_price,
-                            color: '#559701' // We can assign dynamic colors in UI
+                            color: '#FF4D00' // We can assign dynamic colors in UI
                         });
                     }
                     return acc;

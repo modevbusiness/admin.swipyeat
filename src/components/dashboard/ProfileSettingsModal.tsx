@@ -99,7 +99,7 @@ export default function ProfileSettingsModal({ user, onClose, onSave }: ProfileS
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
             <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
 
                 {/* Header */}
@@ -138,7 +138,7 @@ export default function ProfileSettingsModal({ user, onClose, onSave }: ProfileS
                                 )}
                             </div>
                             {!isReadOnly && (
-                                <label className="absolute bottom-0 right-0 p-2 bg-white rounded-full shadow-md border border-gray-100 text-gray-600 hover:text-[#559701] transition-colors cursor-pointer">
+                                <label className="absolute bottom-0 right-0 p-2 bg-white rounded-full shadow-md border border-gray-100 text-gray-600 hover:text-[#FF4D00] transition-colors cursor-pointer">
                                     <Camera className="w-4 h-4" />
                                     <input
                                         type="file"
@@ -191,7 +191,7 @@ export default function ProfileSettingsModal({ user, onClose, onSave }: ProfileS
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     disabled={isReadOnly}
-                                    className={`w-full pl-10 pr-4 py-3 border rounded-xl outline-none transition-all font-medium text-gray-900 ${isReadOnly ? 'bg-gray-100 border-gray-200 cursor-not-allowed text-gray-500' : 'bg-gray-50 border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent'}`}
+                                    className={`w-full pl-10 pr-4 py-3 border rounded-xl outline-none transition-all font-medium text-gray-900 ${isReadOnly ? 'bg-gray-100 border-gray-200 cursor-not-allowed text-gray-500' : 'bg-gray-50 border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent'}`}
                                 />
                             </div>
                         </div>
@@ -223,7 +223,7 @@ export default function ProfileSettingsModal({ user, onClose, onSave }: ProfileS
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     placeholder="+1 (555) 000-0000"
                                     disabled={isReadOnly}
-                                    className={`w-full pl-10 pr-4 py-3 border rounded-xl outline-none transition-all font-medium text-gray-900 ${isReadOnly ? 'bg-gray-100 border-gray-200 cursor-not-allowed text-gray-500' : 'bg-gray-50 border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent'}`}
+                                    className={`w-full pl-10 pr-4 py-3 border rounded-xl outline-none transition-all font-medium text-gray-900 ${isReadOnly ? 'bg-gray-100 border-gray-200 cursor-not-allowed text-gray-500' : 'bg-gray-50 border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent'}`}
                                 />
                             </div>
                         </div>
@@ -245,7 +245,7 @@ export default function ProfileSettingsModal({ user, onClose, onSave }: ProfileS
                         <button
                             onClick={handleSave}
                             disabled={isLoading}
-                            className="px-6 py-2.5 bg-[#559701] text-white font-bold rounded-xl hover:bg-[#4a8501] shadow-lg shadow-[#559701]/20 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="px-6 py-2.5 bg-[#FF4D00] text-white font-bold rounded-xl hover:bg-[#E04400] shadow-lg shadow-[#FF4D00]/20 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
                             Save Changes

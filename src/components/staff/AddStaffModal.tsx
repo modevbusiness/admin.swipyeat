@@ -34,16 +34,16 @@ export default function AddStaffModal({ isOpen, onClose, onSubmit, isLoading }: 
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 flex flex-col">
                 {/* Header */}
-                <div className="px-8 py-6 border-b border-gray-100 flex items-center justify-between bg-white relative">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center">
-                            <User className="w-6 h-6 text-[#559701]" />
+                <div className="px-6 py-3 border-b border-gray-100 flex items-center justify-between bg-white relative flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center">
+                            <User className="w-5 h-5 text-[#FF4D00]" />
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold text-gray-900">Add Staff Member</h2>
-                            <p className="text-sm text-gray-500">Create a new account for kitchen or floor staff.</p>
+                            <h2 className="text-lg font-bold text-gray-900">Add Staff Member</h2>
+                            <p className="text-xs text-gray-500">Create a new account for kitchen or floor staff.</p>
                         </div>
                     </div>
                     <button
@@ -55,46 +55,46 @@ export default function AddStaffModal({ isOpen, onClose, onSubmit, isLoading }: 
                     {/* Progress line if needed, but UI screenshot doesn't show one */}
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-8">
-                    <div className="space-y-8">
+                <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0">
+                    <div className="p-6 space-y-4 overflow-y-auto flex-1">
                         {/* Account Details */}
                         <section>
-                            <div className="flex items-center gap-2 mb-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                            <div className="flex items-center gap-2 mb-3 text-xs font-bold text-gray-400 uppercase tracking-widest">
                                 <Mail className="w-3.5 h-3.5" />
                                 Account Details
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
+                                    <label className="block text-sm font-bold text-gray-700 mb-1.5">Full Name</label>
                                     <input
                                         type="text"
                                         required
                                         placeholder="e.g. Alex Rivera"
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all placeholder:text-gray-300"
+                                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all placeholder:text-gray-300"
                                         value={formData.full_name}
                                         onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+                                    <label className="block text-sm font-bold text-gray-700 mb-1.5">Email Address</label>
                                     <input
                                         type="email"
                                         required
                                         placeholder="alex@restaurant.com"
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all placeholder:text-gray-300"
+                                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all placeholder:text-gray-300"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     />
                                 </div>
                             </div>
-                            <div className="mt-6">
-                                <label className="block text-sm font-bold text-gray-700 mb-2">Password</label>
+                            <div className="mt-3">
+                                <label className="block text-sm font-bold text-gray-700 mb-1.5">Password</label>
                                 <div className="relative">
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         required
                                         placeholder="Min. 8 characters"
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all placeholder:text-gray-300 pr-12"
+                                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all placeholder:text-gray-300 pr-12"
                                         value={formData.password}
                                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     />
@@ -111,27 +111,27 @@ export default function AddStaffModal({ isOpen, onClose, onSubmit, isLoading }: 
 
                         {/* Role Assignment */}
                         <section>
-                            <div className="flex items-center gap-2 mb-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                            <div className="flex items-center gap-2 mb-3 text-xs font-bold text-gray-400 uppercase tracking-widest">
                                 <Briefcase className="w-3.5 h-3.5" />
                                 Role Assignment
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-3 gap-3">
                                 {roles.map((role) => (
                                     <button
                                         key={role.id}
                                         type="button"
                                         onClick={() => setFormData({ ...formData, role: role.id })}
-                                        className={`p-4 rounded-2xl border-2 text-center transition-all ${formData.role === role.id
-                                            ? "border-[#559701] bg-[#559701]/5"
+                                        className={`p-3 rounded-xl border-2 text-center transition-all ${formData.role === role.id
+                                            ? "border-[#FF4D00] bg-[#FF4D00]/5"
                                             : "border-gray-100 bg-white hover:border-gray-200"
                                             }`}
                                     >
-                                        <div className={`w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center ${formData.role === role.id ? "bg-[#559701] text-white" : "bg-gray-100 text-gray-400"
+                                        <div className={`w-9 h-9 rounded-full mx-auto mb-2 flex items-center justify-center ${formData.role === role.id ? "bg-[#FF4D00] text-white" : "bg-gray-100 text-gray-400"
                                             }`}>
-                                            <role.icon className="w-5 h-5" />
+                                            <role.icon className="w-4 h-4" />
                                         </div>
                                         <p className="font-bold text-sm text-gray-900">{role.label}</p>
-                                        <p className="text-[10px] text-gray-500 mt-1">{role.description}</p>
+                                        <p className="text-[10px] text-gray-500 mt-0.5">{role.description}</p>
                                     </button>
                                 ))}
                             </div>
@@ -139,18 +139,18 @@ export default function AddStaffModal({ isOpen, onClose, onSubmit, isLoading }: 
 
                     </div>
 
-                    <div className="mt-10 flex items-center justify-end gap-4">
+                    <div className="px-6 py-3 border-t border-gray-100 bg-gray-50/50 flex items-center justify-end gap-3 flex-shrink-0">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-6 py-3 text-sm font-bold text-gray-500 hover:text-gray-700 transition-colors"
+                            className="px-5 py-2.5 text-sm font-bold text-gray-500 hover:text-gray-700 transition-colors"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="bg-[#559701] hover:bg-[#4a8001] text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-[#559701]/20 transition-all flex items-center gap-2 disabled:opacity-50"
+                            className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-[#FF4D00]/20 transition-all flex items-center gap-2 disabled:opacity-50 text-sm"
                         >
                             {isLoading ? "Creating..." : (
                                 <>

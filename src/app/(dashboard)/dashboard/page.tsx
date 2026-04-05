@@ -64,7 +64,7 @@ export default function DashboardPage() {
       isPositive: true,
       icon: ShoppingCart,
       iconBg: "bg-[#e6f4ea]",
-      iconColor: "text-[#559701]",
+      iconColor: "text-[#FF4D00]",
     },
     {
       title: "Active Orders",
@@ -82,7 +82,7 @@ export default function DashboardPage() {
       isPositive: true,
       icon: DollarSign,
       iconBg: "bg-[#e6f4ea]",
-      iconColor: "text-[#559701]",
+      iconColor: "text-[#FF4D00]",
     },
   ];
 
@@ -96,11 +96,11 @@ export default function DashboardPage() {
       case "preparing":
         return "bg-blue-100 text-blue-600";
       case "ready":
-        return "bg-green-100 text-green-600";
+        return "bg-orange-100 text-orange-600";
       case "served":
         return "bg-gray-800 text-white";
       case "paid":
-        return "bg-[#559701] text-white";
+        return "bg-[#FF4D00] text-white";
       case "canceled":
       case "cancelled":
         return "bg-red-100 text-red-600";
@@ -150,8 +150,8 @@ export default function DashboardPage() {
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="flex items-center gap-1">
-                  <TrendingUp className="w-4 h-4 text-[#559701]" />
-                  <span className="text-sm font-semibold text-[#559701]">
+                  <TrendingUp className="w-4 h-4 text-[#FF4D00]" />
+                  <span className="text-sm font-semibold text-[#FF4D00]">
                     {stat.change}
                   </span>
                 </div>
@@ -178,7 +178,7 @@ export default function DashboardPage() {
             </div>
             <button
               onClick={() => router.push(`/dashboard/orders`)}
-              className="text-sm text-[#559701] font-semibold hover:underline"
+              className="text-sm text-[#FF4D00] font-semibold hover:underline"
             >
               View All
             </button>
@@ -210,7 +210,7 @@ export default function DashboardPage() {
                 >
                   <div>
                     <span className="block text-sm font-bold text-[#1a202c]">{order.order_number}</span>
-                    <span className="text-xs text-green-600 font-medium">{order.total_amount} DH</span>
+                    <span className="text-xs text-orange-600 font-medium">{order.total_amount} DH</span>
                   </div>
                   <span className="text-sm text-gray-600">{order.table_number || 'N/A'}</span>
                   <span className="text-sm text-gray-500">{formatTimeAgo(order.created_at)}</span>
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 className="w-full flex items-center gap-4 p-3 rounded-xl bg-[#f7fafc] hover:bg-gray-100 transition-colors text-left"
               >
                 <div className="w-10 h-10 bg-[#e6f4ea] rounded-lg flex items-center justify-center">
-                  <Plus className="w-5 h-5 text-[#559701]" />
+                  <Plus className="w-5 h-5 text-[#FF4D00]" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1a202c]">Add Menu Item</p>
@@ -252,7 +252,7 @@ export default function DashboardPage() {
                 className="w-full flex items-center gap-4 p-3 rounded-xl bg-[#f7fafc] hover:bg-gray-100 transition-colors text-left"
               >
                 <div className="w-10 h-10 bg-[#e6f4ea] rounded-lg flex items-center justify-center">
-                  <UserPlus className="w-5 h-5 text-[#559701]" />
+                  <UserPlus className="w-5 h-5 text-[#FF4D00]" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1a202c]">Add Staff Member</p>
@@ -265,7 +265,7 @@ export default function DashboardPage() {
                 className="w-full flex items-center gap-4 p-3 rounded-xl bg-[#f7fafc] hover:bg-gray-100 transition-colors text-left"
               >
                 <div className="w-10 h-10 bg-[#e6f4ea] rounded-lg flex items-center justify-center">
-                  <QrCodeIcon className="w-5 h-5 text-[#559701]" />
+                  <QrCodeIcon className="w-5 h-5 text-[#FF4D00]" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#1a202c]">Generate QR Code</p>

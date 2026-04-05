@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, AlertTriangle, Lock, ChevronDown, Check } from "lucide-react";
+import { X, AlertTriangle, ChevronDown } from "lucide-react";
 
 interface CancellationModalProps {
     orderId: string;
@@ -20,9 +20,7 @@ const CANCELLATION_REASONS = [
 
 export default function CancellationModal({ orderId, table, onClose, onConfirm }: CancellationModalProps) {
     const [reason, setReason] = useState("");
-    const [pin, setPin] = useState(["", "", "", ""]);
     const [restoreInventory, setRestoreInventory] = useState(false);
-
     const [error, setError] = useState("");
 
     // Update Restore Inventory Toggle based on Reason
@@ -33,29 +31,9 @@ export default function CancellationModal({ orderId, table, onClose, onConfirm }
         }
     }, [reason]);
 
-    const handlePinChange = (index: number, value: string) => {
-        if (value.length > 1) return;
-        const newPin = [...pin];
-        newPin[index] = value;
-        setPin(newPin);
-
-        // Auto-focus next input
-        if (value && index < 3) {
-            const nextInput = document.getElementById(`pin-${index + 1}`);
-            nextInput?.focus();
-        }
-    };
-
     const handleConfirm = () => {
-        const enteredPin = pin.join("");
         if (!reason) {
             setError("Please select a cancellation reason.");
-            return;
-        }
-        if (enteredPin !== "0000") {
-            setError("Invalid Manager PIN.");
-            setPin(["", "", "", ""]);
-            document.getElementById("pin-0")?.focus();
             return;
         }
 
@@ -63,7 +41,7 @@ export default function CancellationModal({ orderId, table, onClose, onConfirm }
     };
 
     return (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
             <div className="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden flex flex-col">
                 {/* Header */}
                 <div className="px-6 py-5 border-b border-gray-100 flex items-start justify-between bg-red-50/50">
@@ -101,30 +79,6 @@ export default function CancellationModal({ orderId, table, onClose, onConfirm }
                                 <ChevronDown className="w-4 h-4" />
                             </div>
                         </div>
-                    </div>
-
-                    {/* Manager Auth */}
-                    <div className="bg-gray-50 border border-gray-100 rounded-xl p-5">
-                        <div className="flex items-center gap-2 mb-4">
-                            <Lock className="w-4 h-4 text-gray-500" />
-                            <span className="text-sm font-bold text-gray-900">Manager Authorization</span>
-                        </div>
-
-                        <div className="flex justify-center gap-3 mb-2">
-                            {[0, 1, 2, 3].map((i) => (
-                                <input
-                                    key={i}
-                                    id={`pin-${i}`}
-                                    type="password"
-                                    maxLength={1}
-                                    value={pin[i]}
-                                    onChange={(e) => handlePinChange(i, e.target.value)}
-                                    className="w-12 h-14 border border-gray-200 rounded-lg text-center text-2xl font-bold text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all placeholder-gray-300 bg-white"
-                                    placeholder="•"
-                                />
-                            ))}
-                        </div>
-                        <p className="text-center text-xs text-gray-400 mt-2">Enter 4-digit manager PIN to authorize</p>
                     </div>
 
                     {/* Toggle */}

@@ -153,7 +153,7 @@ export default function StaffPage() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-[#559701] hover:bg-[#4a8001] text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-[#559701]/20"
+          className="flex items-center gap-2 bg-[#FF4D00] hover:bg-[#E04400] text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-[#FF4D00]/20"
         >
           <Plus className="w-5 h-5" />
           Add New Staff
@@ -179,7 +179,7 @@ export default function StaffPage() {
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-100 rounded-lg text-sm text-gray-600 outline-none focus:border-[#559701] font-bold"
+            className="px-4 py-2 border border-gray-100 rounded-lg text-sm text-gray-600 outline-none focus:border-[#FF4D00] font-bold"
           >
             <option value="all">All Roles</option>
             <option value="manager">Manager</option>

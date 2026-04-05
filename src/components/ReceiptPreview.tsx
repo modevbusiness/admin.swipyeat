@@ -130,7 +130,7 @@ export default function ReceiptPreview({ order, restaurant, onClose }: ReceiptPr
                                 <div key={item.id} className="flex justify-between items-start group">
                                     <div>
                                         <div className="text-gray-900 font-bold text-sm">
-                                            {item.name} <span className="text-green-600 text-xs ml-0.5">x{item.quantity}</span>
+                                            {item.name} <span className="text-orange-600 text-xs ml-0.5">x{item.quantity}</span>
                                         </div>
                                         {item.modifiers && item.modifiers.length > 0 && (
                                             <div className="text-[10px] text-gray-400 uppercase mt-0.5 max-w-[180px] leading-tight">
@@ -160,7 +160,7 @@ export default function ReceiptPreview({ order, restaurant, onClose }: ReceiptPr
                         </div>
 
                         {/* QR Code */}
-                        <div className="bg-green-50/50 p-6 rounded-xl border border-dashed border-green-100 mb-6 flex flex-col items-center justify-center text-center">
+                        <div className="bg-orange-50/50 p-6 rounded-xl border border-dashed border-orange-100 mb-6 flex flex-col items-center justify-center text-center">
                             <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 mb-3">
                                 <QRCode
                                     size={100}
@@ -179,7 +179,7 @@ Total: ${total.toFixed(2)} DH
                                     viewBox={`0 0 256 256`}
                                 />
                             </div>
-                            <p className="text-[10px] font-bold text-green-700 uppercase tracking-widest">Scan for Loyalty Points</p>
+                            <p className="text-[10px] font-bold text-orange-700 uppercase tracking-widest">Scan for Loyalty Points</p>
                         </div>
 
                         {/* Footer */}

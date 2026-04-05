@@ -78,7 +78,7 @@ export default function EditStaffPage() {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-[400px]">
-                <Loader2 className="w-8 h-8 animate-spin text-[#559701]" />
+                <Loader2 className="w-8 h-8 animate-spin text-[#FF4D00]" />
             </div>
         );
     }
@@ -104,8 +104,8 @@ export default function EditStaffPage() {
                 {/* Header */}
                 <div className="px-10 py-8 border-b border-gray-100 flex items-center justify-between">
                     <div className="flex items-center gap-5">
-                        <div className="w-14 h-14 bg-[#f0f9eb] rounded-2xl flex items-center justify-center">
-                            <User className="w-7 h-7 text-[#559701]" />
+                        <div className="w-14 h-14 bg-[#FFF0EB] rounded-2xl flex items-center justify-center">
+                            <User className="w-7 h-7 text-[#FF4D00]" />
                         </div>
                         <div>
                             <h2 className="text-2xl font-black text-gray-900 tracking-tight">Edit Staff Member</h2>
@@ -129,7 +129,7 @@ export default function EditStaffPage() {
                                         type="text"
                                         required
                                         placeholder="e.g. Alex Rivera"
-                                        className="w-full px-6 py-4 rounded-2xl bg-gray-50/50 border border-transparent focus:bg-white focus:border-[#559701] focus:ring-4 focus:ring-[#559701]/5 outline-none transition-all placeholder:text-gray-300 font-bold"
+                                        className="w-full px-6 py-4 rounded-2xl bg-gray-50/50 border border-transparent focus:bg-white focus:border-[#FF4D00] focus:ring-4 focus:ring-[#FF4D00]/5 outline-none transition-all placeholder:text-gray-300 font-bold"
                                         value={formData.full_name}
                                         onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
                                     />
@@ -159,11 +159,11 @@ export default function EditStaffPage() {
                                         type="button"
                                         onClick={() => setFormData({ ...formData, role: role.id })}
                                         className={`p-6 rounded-[32px] border-2 text-center transition-all flex flex-col items-center gap-4 ${formData.role === role.id
-                                            ? "border-[#559701] bg-[#f0f9eb]/30 shadow-lg shadow-[#559701]/5"
+                                            ? "border-[#FF4D00] bg-[#FFF0EB]/30 shadow-lg shadow-[#FF4D00]/5"
                                             : "border-gray-50 bg-white hover:border-gray-200"
                                             }`}
                                     >
-                                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${formData.role === role.id ? "bg-[#559701] text-white shadow-lg" : "bg-gray-50 text-gray-400"
+                                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${formData.role === role.id ? "bg-[#FF4D00] text-white shadow-lg" : "bg-gray-50 text-gray-400"
                                             }`}>
                                             <role.icon className="w-6 h-6" />
                                         </div>
@@ -188,7 +188,7 @@ export default function EditStaffPage() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-[#559701] hover:bg-[#4a8001] text-white font-black py-4 px-10 rounded-2xl shadow-xl shadow-[#559701]/20 transition-all flex items-center gap-3 disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]"
+                            className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-black py-4 px-10 rounded-2xl shadow-xl shadow-[#FF4D00]/20 transition-all flex items-center gap-3 disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]"
                         >
                             {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin" /> : (
                                 <>

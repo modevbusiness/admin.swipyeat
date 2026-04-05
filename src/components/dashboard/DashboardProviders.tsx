@@ -19,7 +19,7 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
     if (loading) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-[#f7fafc]">
-                <Loader2 className="w-10 h-10 animate-spin text-[#559701]" />
+                <Loader2 className="w-10 h-10 animate-spin text-[#FF4D00]" />
             </div>
         );
     }
@@ -28,7 +28,7 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
     if (!user) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-[#f7fafc]">
-                <Loader2 className="w-10 h-10 animate-spin text-[#559701]" />
+                <Loader2 className="w-10 h-10 animate-spin text-[#FF4D00]" />
             </div>
         );
     }

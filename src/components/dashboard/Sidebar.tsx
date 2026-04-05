@@ -159,7 +159,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                     flex items-center gap-3 px-3 py-2 rounded-xl text-xs lg:text-sm font-medium
                     transition-all duration-200 relative group
                     ${active
-                        ? "bg-[#559701] text-white shadow-sm"
+                        ? "bg-[#FF4D00] text-white shadow-sm"
                         : "text-[#4a5568] hover:bg-[#f7fafc] hover:text-[#1a202c]"
                     }
                 `}
@@ -210,7 +210,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                                 className="w-full h-full object-cover"
                             />
                         ) : (
-                            <div className="text-[#559701] font-bold text-lg lg:text-xl uppercase">
+                            <div className="text-[#FF4D00] font-bold text-lg lg:text-xl uppercase">
                                 {restaurant?.name?.charAt(0) || 'R'}
                             </div>
                         )}

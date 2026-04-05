@@ -64,7 +64,7 @@ export default function AnalyticsPage() {
         return (
             <div className="flex items-center justify-center min-h-[60vh]">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-10 h-10 animate-spin text-[#559701]" />
+                    <Loader2 className="w-10 h-10 animate-spin text-[#FF4D00]" />
                     <p className="text-gray-500 font-medium font-outfit">Cooking your data...</p>
                 </div>
             </div>
@@ -77,7 +77,7 @@ export default function AnalyticsPage() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-sm">
                 <div>
                     <h1 className="text-3xl font-black text-[#1a202c] tracking-tight">Kitchen Intelligence</h1>
-                    <p className="text-gray-500 mt-1 font-medium">Real-time operational suite for <span className="text-[#559701] font-bold">{restaurant?.name}</span></p>
+                    <p className="text-gray-500 mt-1 font-medium">Real-time operational suite for <span className="text-[#FF4D00] font-bold">{restaurant?.name}</span></p>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ export default function AnalyticsPage() {
                                 key={t}
                                 onClick={() => setTimeframe(t)}
                                 className={`px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 ease-in-out ${timeframe === t
-                                    ? "bg-white text-[#559701] shadow-lg shadow-gray-100 ring-1 ring-black/5"
+                                    ? "bg-white text-[#FF4D00] shadow-lg shadow-gray-100 ring-1 ring-black/5"
                                     : "text-gray-400 hover:text-gray-600 hover:bg-white/50"
                                     }`}
                             >
@@ -109,10 +109,10 @@ export default function AnalyticsPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-6 gap-3">
                 {/* Revenue Card - Same style as others */}
                 <div className="group relative bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden col-span-1">
-                    <div className="absolute -right-4 -top-4 w-24 h-24 bg-green-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute -right-4 -top-4 w-24 h-24 bg-orange-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="flex items-center justify-between mb-6">
-                        <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6 duration-300">
-                            <DollarSign className="w-7 h-7 text-green-500" />
+                        <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6 duration-300">
+                            <DollarSign className="w-7 h-7 text-orange-500" />
                         </div>
                     </div>
                     <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1">Revenue</p>
@@ -329,9 +329,9 @@ export default function AnalyticsPage() {
                                             }
                                         </p>
                                     </div>
-                                    <div className="text-center bg-green-50 rounded-xl py-3">
-                                        <p className="text-[10px] text-green-600 font-bold uppercase">Most Orders</p>
-                                        <p className="text-base font-black text-green-700">
+                                    <div className="text-center bg-orange-50 rounded-xl py-3">
+                                        <p className="text-[10px] text-orange-600 font-bold uppercase">Most Orders</p>
+                                        <p className="text-base font-black text-orange-700">
                                             {data?.hourlyTraffic?.length > 0 
                                                 ? Math.max(...data.hourlyTraffic.map((t: any) => t.count))
                                                 : 0
@@ -356,9 +356,9 @@ export default function AnalyticsPage() {
                                             {data?.totalOrders || 0}
                                         </p>
                                     </div>
-                                    <div className="text-center bg-green-50 rounded-xl py-3">
-                                        <p className="text-[10px] text-green-600 font-bold uppercase">Avg/Day</p>
-                                        <p className="text-base font-black text-green-700">
+                                    <div className="text-center bg-orange-50 rounded-xl py-3">
+                                        <p className="text-[10px] text-orange-600 font-bold uppercase">Avg/Day</p>
+                                        <p className="text-base font-black text-orange-700">
                                             {data?.revenueTrends?.length > 0 
                                                 ? Math.round((data?.totalOrders || 0) / data.revenueTrends.length)
                                                 : 0
@@ -390,7 +390,7 @@ export default function AnalyticsPage() {
                                         </div>
                                         <div className="w-full bg-gray-100 h-3 rounded-full overflow-hidden">
                                             <div
-                                                className="h-full bg-[#559701] rounded-full transition-all duration-1000 group-hover:bg-[#437a01]"
+                                                className="h-full bg-[#FF4D00] rounded-full transition-all duration-1000 group-hover:bg-[#E04400]"
                                                 style={{ width: `${(cat.value / (data.topCategories[0]?.value || 1)) * 100}%` }}
                                             />
                                         </div>
@@ -409,12 +409,12 @@ export default function AnalyticsPage() {
                                 {data?.topStaff?.length > 0 ? data.topStaff.map((staff: any, i: number) => (
                                     <div key={i} className="flex items-center justify-between group">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-2xl bg-gray-100 overflow-hidden relative border border-transparent group-hover:border-[#559701] transition-all">
+                                            <div className="w-10 h-10 rounded-2xl bg-gray-100 overflow-hidden relative border border-transparent group-hover:border-[#FF4D00] transition-all">
                                                 {staff.avatar ? <img src={staff.avatar} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center"><User className="w-4 h-4 text-gray-400" /></div>}
                                             </div>
                                             <div>
                                                 <p className="font-bold text-[#1a202c] text-sm">{staff.name}</p>
-                                                <p className="text-[9px] text-[#559701] font-bold uppercase tracking-widest leading-none">Rank #{i + 1}</p>
+                                                <p className="text-[9px] text-[#FF4D00] font-bold uppercase tracking-widest leading-none">Rank #{i + 1}</p>
                                             </div>
                                         </div>
                                         <div className="text-right">
@@ -433,7 +433,7 @@ export default function AnalyticsPage() {
                     <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
                         <div className="flex items-center justify-between mb-8">
                             <h3 className="text-xl font-black text-[#1a202c]">Menu Superstars</h3>
-                            <span className="text-xs font-bold text-[#559701] uppercase tracking-widest">Top 5 Items</span>
+                            <span className="text-xs font-bold text-[#FF4D00] uppercase tracking-widest">Top 5 Items</span>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {data?.topItems?.map((item: any, i: number) => (
@@ -450,7 +450,7 @@ export default function AnalyticsPage() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-[#1a202c] leading-tight mb-1">{item.name}</h4>
-                                        <p className="text-xs font-medium text-gray-500">{item.sales} orders · <span className="text-[#559701] font-bold">{item.revenue.toLocaleString()} DH</span></p>
+                                        <p className="text-xs font-medium text-gray-500">{item.sales} orders · <span className="text-[#FF4D00] font-bold">{item.revenue.toLocaleString()} DH</span></p>
                                     </div>
                                 </div>
                             ))}
@@ -476,7 +476,7 @@ export default function AnalyticsPage() {
                                     <circle cx="50" cy="50" r="45" fill="none" stroke="#f9fafb" strokeWidth="8" />
                                     {/* Progress Circle */}
                                     <circle
-                                        cx="50" cy="50" r="45" fill="none" stroke="#559701" strokeWidth="8"
+                                        cx="50" cy="50" r="45" fill="none" stroke="#FF4D00" strokeWidth="8"
                                         strokeDasharray="282.7" // 2 * pi * 45
                                         strokeDashoffset={282.7 - (282.7 * (data?.liveOccupancy?.percentage || 0)) / 100}
                                         className="transition-all duration-1000 ease-out"
@@ -496,7 +496,7 @@ export default function AnalyticsPage() {
                         <div className="space-y-3">
                             <div className="flex items-center justify-between p-3 bg-gray-50 rounded-2xl">
                                 <div className="flex items-center gap-3">
-                                    <span className="w-2.5 h-2.5 bg-[#559701] rounded-full" />
+                                    <span className="w-2.5 h-2.5 bg-[#FF4D00] rounded-full" />
                                     <span className="text-xs font-bold text-gray-600">Occupancy Rate</span>
                                 </div>
                                 <span className="text-sm font-black text-[#1a202c]">{data?.liveOccupancy?.percentage}%</span>
@@ -504,7 +504,7 @@ export default function AnalyticsPage() {
 
                             {/* Status Breakdown (Mini) */}
                             {[
-                                { label: "Ready", count: data?.statusBreakdown?.ready || 0, color: "bg-[#559701]" },
+                                { label: "Ready", count: data?.statusBreakdown?.ready || 0, color: "bg-[#FF4D00]" },
                                 { label: "Preparing", count: data?.statusBreakdown?.preparing || 0, color: "bg-orange-500" },
                                 { label: "Pending", count: data?.statusBreakdown?.pending || 0, color: "bg-gray-400" },
                             ].map((status, i) => (
@@ -524,14 +524,14 @@ export default function AnalyticsPage() {
                         <h3 className="text-xl font-black text-[#1a202c] mb-6">Performance Insights</h3>
                         <div className="space-y-4">
                             {/* Peak Performance */}
-                            <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border border-green-200">
+                            <div className="p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border border-orange-200">
                                 <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-10 h-10 bg-green-200 rounded-xl flex items-center justify-center">
-                                        <Flame className="w-5 h-5 text-green-700" />
+                                    <div className="w-10 h-10 bg-orange-200 rounded-xl flex items-center justify-center">
+                                        <Flame className="w-5 h-5 text-orange-700" />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-bold text-green-600 uppercase">Peak Hour</p>
-                                        <p className="text-lg font-black text-green-800">
+                                        <p className="text-xs font-bold text-orange-600 uppercase">Peak Hour</p>
+                                        <p className="text-lg font-black text-orange-800">
                                             {data?.hourlyTraffic?.length > 0 
                                                 ? `${data.hourlyTraffic.reduce((max: any, t: any, i: number, arr: any[]) => t.count > (arr[max]?.count || 0) ? i : max, 0)}:00`
                                                 : 'N/A'

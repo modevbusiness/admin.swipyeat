@@ -72,7 +72,7 @@ export default function SubscriptionGuard({ children }: { children: React.ReactN
                         <div className="space-y-4 pt-4">
                             <button
                                 onClick={() => router.push(`/dashboard/subscription/pricing`)}
-                                className="w-full bg-[#559701] hover:bg-[#4a8001] text-white py-5 rounded-2xl font-black text-lg transition-all shadow-xl shadow-[#559701]/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+                                className="w-full bg-[#FF4D00] hover:bg-[#E04400] text-white py-5 rounded-2xl font-black text-lg transition-all shadow-xl shadow-[#FF4D00]/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
                             >
                                 <span className="text-xl">👉</span> {isSuspended ? "Reactivate Plan" : "Upgrade Plan"}
                             </button>

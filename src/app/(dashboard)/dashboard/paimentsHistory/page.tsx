@@ -183,7 +183,7 @@ export default function BillingPage() {
                                     setSelectedTable(e.target.value);
                                     setCurrentPage(1); // Reset to page 1 on filter change
                                 }}
-                                className="w-full pl-10 pr-10 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#559701]/20 focus:border-[#559701] transition-all appearance-none cursor-pointer"
+                                className="w-full pl-10 pr-10 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FF4D00]/20 focus:border-[#FF4D00] transition-all appearance-none cursor-pointer"
                             >
                                 <option value="All">All Tables</option>
                                 {Array.from({ length: numberOfTables }, (_, i) => i + 1).map((num) => (
@@ -235,7 +235,7 @@ export default function BillingPage() {
                                     invoices.map((inv) => (
                                         <tr key={inv.id} className="group hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <span className="text-sm font-bold text-[#559701]">{inv.id}</span>
+                                                <span className="text-sm font-bold text-[#FF4D00]">{inv.id}</span>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <span className="text-sm font-medium text-gray-900">{inv.table}</span>
@@ -250,7 +250,7 @@ export default function BillingPage() {
                                                 <span className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide rounded-md border
                                                 ${inv.method === 'Card'
                                                         ? 'bg-blue-50 text-blue-600 border-blue-100'
-                                                        : 'bg-green-50 text-green-600 border-green-100'
+                                                        : 'bg-orange-50 text-orange-600 border-orange-100'
                                                     }
                                             `}>
                                                     {inv.method}

@@ -104,7 +104,7 @@ Thank you!`;
                         </button>
                         <button
                             onClick={handlePrint}
-                            className="flex items-center gap-2 px-4 py-2 bg-[#559701] text-white rounded-lg font-bold text-sm hover:bg-[#4a8501] transition-colors shadow-sm"
+                            className="flex items-center gap-2 px-4 py-2 bg-[#FF4D00] text-white rounded-lg font-bold text-sm hover:bg-[#E04400] transition-colors shadow-sm"
                         >
                             <Printer className="w-4 h-4" /> Print
                         </button>
@@ -115,11 +115,11 @@ Thank you!`;
                 <div className="facture-paper bg-white w-full shadow-2xl p-8 md:p-12 rounded-sm relative text-center font-sans animate-in zoom-in-95 duration-200">
 
                     {/* Logo */}
-                    <div className="w-16 h-16 mx-auto mb-4 bg-[#559701] rounded-2xl flex items-center justify-center p-3">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-[#FF4D00] rounded-2xl flex items-center justify-center p-3">
                         <Image src="/SwipyEat_Logo_Clean.png" width={64} height={64} alt="Logo" className="object-contain brightness-0 invert" />
                     </div>
 
-                    <h1 className="text-xl font-bold text-[#559701] uppercase tracking-wider mb-2">The Green Bistro</h1>
+                    <h1 className="text-xl font-bold text-[#FF4D00] uppercase tracking-wider mb-2">The Green Bistro</h1>
                     <div className="text-xs text-gray-500 space-y-1 mb-8">
                         <p>124 Culinary Heights, Gastronomy District</p>
                         <p>San Francisco, CA 94103</p>
@@ -139,7 +139,7 @@ Thank you!`;
 
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Order Identification</p>
                         <h2 className="text-2xl font-bold text-gray-900 mb-1">{invoice.id}</h2>
-                        <p className="text-xs font-bold text-[#559701]">Table {invoice.table} • Guest: {invoice.customerEmail.split('@')[0]}</p>
+                        <p className="text-xs font-bold text-[#FF4D00]">Table {invoice.table} • Guest: {invoice.customerEmail.split('@')[0]}</p>
                     </div>
 
                     {/* Meta */}
@@ -161,7 +161,7 @@ Thank you!`;
                             {invoice.items.map((item: any, idx: number) => (
                                 <div key={idx} className="flex justify-between items-start text-sm">
                                     <div>
-                                        <span className="font-bold text-gray-900">{item.name}</span> <span className="text-[#559701] font-bold text-xs">x{item.qty}</span>
+                                        <span className="font-bold text-gray-900">{item.name}</span> <span className="text-[#FF4D00] font-bold text-xs">x{item.qty}</span>
                                         <p className="text-[10px] text-gray-400 mt-0.5">Medium rare, No onions</p>
                                     </div>
                                     <span className="font-bold text-gray-900">{(item.price * item.qty).toFixed(2)} DH</span>
@@ -182,7 +182,7 @@ Thank you!`;
                         </div>
                         <div className="flex justify-between text-2xl font-bold text-gray-900 pt-4 items-end">
                             <span className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-1">Final Total</span>
-                            <span className="text-[#559701]">{invoice.amount} DH</span>
+                            <span className="text-[#FF4D00]">{invoice.amount} DH</span>
                         </div>
                     </div>
 
@@ -200,7 +200,7 @@ Thank you!`;
 
                     {/* Footer Message */}
                     <div className="mt-10 pt-8 border-t border-dashed border-gray-200">
-                        <h4 className="text-sm font-bold text-[#559701] italic mb-1">Thank You for Dining With Us!</h4>
+                        <h4 className="text-sm font-bold text-[#FF4D00] italic mb-1">Thank You for Dining With Us!</h4>
                         <p className="text-[10px] text-gray-400 max-w-[200px] mx-auto leading-relaxed">Please scan the QR code to leave a review or download your digital receipt.</p>
                         <p className="text-[8px] text-gray-300 uppercase tracking-[0.2em] mt-6">KDS Manager • Secure Facture V2.4</p>
                     </div>

@@ -24,7 +24,7 @@ export default function InvoiceDrawer({ invoice, onClose, onPrint }: InvoiceDraw
                     <div>
                         <div className="flex items-center gap-2 mb-1">
                             <h2 className="text-xl font-bold text-gray-900">{invoice.id}</h2>
-                            <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+                            <span className="bg-orange-100 text-orange-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
                                 Paid
                             </span>
                         </div>
@@ -41,10 +41,10 @@ export default function InvoiceDrawer({ invoice, onClose, onPrint }: InvoiceDraw
                     {/* Timeline (Simplified Vertical) */}
                     <div>
                         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Order Timeline</h3>
-                        <div className="pl-2 border-l-2 border-green-100 space-y-6 relative ml-1">
+                        <div className="pl-2 border-l-2 border-orange-100 space-y-6 relative ml-1">
                             {['Ordered', 'Preparing', 'Ready', 'Served'].map((step, idx) => (
                                 <div key={step} className="relative pl-6">
-                                    <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-green-500 rounded-full ring-4 ring-white"></div>
+                                    <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-orange-500 rounded-full ring-4 ring-white"></div>
                                     <h4 className="text-sm font-bold text-gray-900">{step}</h4>
                                     <p className="text-xs text-gray-400">14:10</p>
                                 </div>
@@ -60,7 +60,7 @@ export default function InvoiceDrawer({ invoice, onClose, onPrint }: InvoiceDraw
                                 <div key={idx} className="flex justify-between items-start">
                                     <div>
                                         <div className="text-sm font-bold text-gray-900">
-                                            {item.name} <span className="text-green-600 ml-1">x{item.qty}</span>
+                                            {item.name} <span className="text-orange-600 ml-1">x{item.qty}</span>
                                         </div>
                                         <p className="text-xs text-gray-400">Medium rare, No onions</p>
                                     </div>
@@ -109,7 +109,7 @@ export default function InvoiceDrawer({ invoice, onClose, onPrint }: InvoiceDraw
                 <div className="p-6 border-t border-gray-100 bg-gray-50 space-y-3">
                     <button
                         onClick={onPrint}
-                        className="w-full py-3 bg-[#559701] hover:bg-[#4a8501] text-white rounded-xl font-bold text-sm shadow-lg shadow-[#559701]/20 flex items-center justify-center gap-2 transition-all"
+                        className="w-full py-3 bg-[#FF4D00] hover:bg-[#E04400] text-white rounded-xl font-bold text-sm shadow-lg shadow-[#FF4D00]/20 flex items-center justify-center gap-2 transition-all"
                     >
                         <Printer className="w-4 h-4" /> Print Facture
                     </button>

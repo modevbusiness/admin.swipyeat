@@ -61,8 +61,8 @@ export default function UpdatePasswordModal({ isOpen, userId, onSuccess, onCance
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
             <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
                 <div className="p-8">
-                    <div className="w-12 h-12 bg-[#559701]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <RefreshCw className="w-6 h-6 text-[#559701]" />
+                    <div className="w-12 h-12 bg-[#FF4D00]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <RefreshCw className="w-6 h-6 text-[#FF4D00]" />
                     </div>
 
                     <h2 className="text-xl font-bold text-gray-900 text-center mb-2">Secure Your Account</h2>
@@ -80,7 +80,7 @@ export default function UpdatePasswordModal({ isOpen, userId, onSuccess, onCance
                                     type={showPwd ? "text" : "password"}
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none pr-12"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none pr-12"
                                     placeholder="••••••••"
                                 />
                                 <button
@@ -101,7 +101,7 @@ export default function UpdatePasswordModal({ isOpen, userId, onSuccess, onCance
                                     type={showConfirmPwd ? "text" : "password"}
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className={`w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none pr-12 ${confirmPassword && !isMatch ? "border-red-300 bg-red-50" : ""
+                                    className={`w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none pr-12 ${confirmPassword && !isMatch ? "border-red-300 bg-red-50" : ""
                                         }`}
                                     placeholder="••••••••"
                                 />
@@ -119,20 +119,20 @@ export default function UpdatePasswordModal({ isOpen, userId, onSuccess, onCance
                         <div className="bg-gray-50 p-4 rounded-xl space-y-2">
                             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Password Security</p>
 
-                            <div className={`flex items-center gap-2 text-xs ${checks.hasLength ? "text-[#559701] font-bold" : "text-gray-500"}`}>
-                                <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${checks.hasLength ? "bg-[#559701] border-[#559701]" : "border-gray-300"}`}>
+                            <div className={`flex items-center gap-2 text-xs ${checks.hasLength ? "text-[#FF4D00] font-bold" : "text-gray-500"}`}>
+                                <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${checks.hasLength ? "bg-[#FF4D00] border-[#FF4D00]" : "border-gray-300"}`}>
                                     {checks.hasLength && <CheckCircle className="w-2 h-2 text-white" />}
                                 </div>
                                 At least 8 characters long
                             </div>
-                            <div className={`flex items-center gap-2 text-xs ${checks.hasSpecial ? "text-[#559701] font-bold" : "text-gray-500"}`}>
-                                <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${checks.hasSpecial ? "bg-[#559701] border-[#559701]" : "border-gray-300"}`}>
+                            <div className={`flex items-center gap-2 text-xs ${checks.hasSpecial ? "text-[#FF4D00] font-bold" : "text-gray-500"}`}>
+                                <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${checks.hasSpecial ? "bg-[#FF4D00] border-[#FF4D00]" : "border-gray-300"}`}>
                                     {checks.hasSpecial && <CheckCircle className="w-2 h-2 text-white" />}
                                 </div>
                                 Contains at least one special character (!@#$%)
                             </div>
-                            <div className={`flex items-center gap-2 text-xs ${checks.hasNumber ? "text-[#559701] font-bold" : "text-gray-500"}`}>
-                                <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${checks.hasNumber ? "bg-[#559701] border-[#559701]" : "border-gray-300"}`}>
+                            <div className={`flex items-center gap-2 text-xs ${checks.hasNumber ? "text-[#FF4D00] font-bold" : "text-gray-500"}`}>
+                                <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${checks.hasNumber ? "bg-[#FF4D00] border-[#FF4D00]" : "border-gray-300"}`}>
                                     {checks.hasNumber && <CheckCircle className="w-2 h-2 text-white" />}
                                 </div>
                                 Contains at least one number
@@ -148,7 +148,7 @@ export default function UpdatePasswordModal({ isOpen, userId, onSuccess, onCance
                         <button
                             type="submit"
                             disabled={isUpdating || !isValid}
-                            className="w-full py-4 bg-[#559701] hover:bg-[#4a8001] text-white rounded-xl font-bold shadow-lg shadow-[#559701]/20 transition-all disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
+                            className="w-full py-4 bg-[#FF4D00] hover:bg-[#E04400] text-white rounded-xl font-bold shadow-lg shadow-[#FF4D00]/20 transition-all disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
                         >
                             {isUpdating ? <Loader2 className="w-5 h-5 animate-spin" /> : "Update & Sign In"}
                         </button>

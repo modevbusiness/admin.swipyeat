@@ -130,7 +130,7 @@ export default function SettingsPage() {
                 window.location.reload();
               }}
               disabled={isRetrying}
-              className="w-full flex items-center justify-center gap-2 bg-[#559701] hover:bg-[#4a8001] text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-[#559701]/20 active:scale-95 disabled:opacity-70 disabled:pointer-events-none"
+              className="w-full flex items-center justify-center gap-2 bg-[#FF4D00] hover:bg-[#E04400] text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-[#FF4D00]/20 active:scale-95 disabled:opacity-70 disabled:pointer-events-none"
             >
               {isRetrying ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -145,7 +145,7 @@ export default function SettingsPage() {
 
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin text-[#559701]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#FF4D00]" />
       </div>
     );
   }
@@ -164,8 +164,8 @@ export default function SettingsPage() {
         {/* Profile Section */}
         <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm space-y-8">
           <div className="flex items-center gap-3 pb-4 border-b border-gray-50">
-            <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center">
-              <Store className="w-5 h-5 text-[#559701]" />
+            <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
+              <Store className="w-5 h-5 text-[#FF4D00]" />
             </div>
             <h2 className="text-lg font-bold text-gray-900">Restaurant Profile</h2>
           </div>
@@ -176,7 +176,7 @@ export default function SettingsPage() {
               <label className="block text-sm font-bold text-gray-700">Restaurant Logo</label>
               <div className="flex items-center gap-6">
                 <div className="relative group">
-                  <div className="w-24 h-24 rounded-2xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden group-hover:border-[#559701] transition-colors">
+                  <div className="w-24 h-24 rounded-2xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden group-hover:border-[#FF4D00] transition-colors">
                     {formData.logo_url ? (
                       <img src={formData.logo_url} alt="Logo" className="w-full h-full object-cover" />
                     ) : (
@@ -203,7 +203,7 @@ export default function SettingsPage() {
                     type="button"
                     onClick={() => logoInputRef.current?.click()}
                     disabled={!!isUploading}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-700 hover:border-[#559701] hover:text-[#559701] transition-all disabled:opacity-50"
+                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm font-bold text-gray-700 hover:border-[#FF4D00] hover:text-[#FF4D00] transition-all disabled:opacity-50"
                   >
                     <Upload className="w-4 h-4" />
                     Choose Picture
@@ -223,7 +223,7 @@ export default function SettingsPage() {
             <div className="space-y-4">
               <label className="block text-sm font-bold text-gray-700">Cover Image</label>
               <div className="relative group">
-                <div className="w-full h-24 rounded-2xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden group-hover:border-[#559701] transition-colors">
+                <div className="w-full h-24 rounded-2xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center overflow-hidden group-hover:border-[#FF4D00] transition-colors">
                   {formData.cover_image_url ? (
                     <img src={formData.cover_image_url} alt="Cover" className="w-full h-full object-cover" />
                   ) : (
@@ -261,7 +261,7 @@ export default function SettingsPage() {
               <input
                 type="text"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all"
                 value={formData.name}
                 onChange={(e) => handleNameChange(e.target.value)}
               />
@@ -287,7 +287,7 @@ export default function SettingsPage() {
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full px-4 py-11/12 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full px-4 py-11/12 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all pl-12"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 />
@@ -302,7 +302,7 @@ export default function SettingsPage() {
               <div className="relative">
                 <input
                   type="email"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all pl-12"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -315,7 +315,7 @@ export default function SettingsPage() {
                 <input
                   type="number"
                   disabled
-                  className="w-full bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full bg-gray-50 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all pl-12"
                   value={formData.number_of_tables}
                   onChange={(e) => {
                     const val = parseInt(e.target.value);
@@ -346,7 +346,7 @@ export default function SettingsPage() {
                 <input
                   type="text"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all pl-12"
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                 />
@@ -357,7 +357,7 @@ export default function SettingsPage() {
               <label className="text-sm font-bold text-gray-700">City</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
               />
@@ -385,7 +385,7 @@ export default function SettingsPage() {
               <div className="relative">
                 <input
                   type="url"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all pl-12"
                   value={formData.google_map_url}
                   onChange={(e) => setFormData({ ...formData, google_map_url: e.target.value })}
                   placeholder="https://maps.google.com/..."
@@ -398,7 +398,7 @@ export default function SettingsPage() {
               <div className="relative">
                 <input
                   type="url"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#559701] focus:border-transparent outline-none transition-all pl-12"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#FF4D00] focus:border-transparent outline-none transition-all pl-12"
                   value={formData.instagram_url}
                   onChange={(e) => setFormData({ ...formData, instagram_url: e.target.value })}
                   placeholder="https://instagram.com/..."
@@ -416,7 +416,7 @@ export default function SettingsPage() {
         <button
           type="submit"
           disabled={isSaving}
-          className="flex items-center gap-2 bg-[#559701] hover:bg-[#4a8001] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-[#559701]/20 disabled:opacity-50 w-full sm:w-auto justify-center"
+          className="flex items-center gap-2 bg-[#FF4D00] hover:bg-[#E04400] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-[#FF4D00]/20 disabled:opacity-50 w-full sm:w-auto justify-center"
         >
           {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
           Save Changes

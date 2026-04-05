@@ -39,7 +39,7 @@ export default function StaffTable({ staff, onEdit, onDelete, onToggleStatus, on
             case "chef":
                 return "bg-orange-50 text-orange-600 border-orange-100";
             case "waiter":
-                return "bg-green-50 text-green-600 border-green-100";
+                return "bg-orange-50 text-orange-600 border-orange-100";
             default:
                 return "bg-gray-50 text-gray-600 border-gray-100";
         }
@@ -135,7 +135,7 @@ export default function StaffTable({ staff, onEdit, onDelete, onToggleStatus, on
                                 <td className="px-6 py-4">
                                     <button
                                         onClick={() => onToggleStatus(member.id, member.is_active)}
-                                        className={`w-10 h-5 rounded-full relative transition-colors duration-200 ${member.is_active ? "bg-[#559701]" : "bg-gray-200"}`}
+                                        className={`w-10 h-5 rounded-full relative transition-colors duration-200 ${member.is_active ? "bg-[#FF4D00]" : "bg-gray-200"}`}
                                     >
                                         <div className={`absolute top-1 left-1 w-3 h-3 bg-white rounded-full transition-transform duration-200 ${member.is_active ? "translate-x-5" : ""}`} />
                                     </button>

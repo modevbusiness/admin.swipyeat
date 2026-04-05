@@ -39,10 +39,10 @@ export default function ConfirmationModal({
                 };
             case "success":
                 return {
-                    icon: <CheckCircle2 className="w-12 h-12 text-[#559701]" />,
-                    button: "bg-[#559701] hover:bg-[#4a8001] shadow-green-100",
-                    bg: "bg-green-50",
-                    ring: "focus:ring-green-100",
+                    icon: <CheckCircle2 className="w-12 h-12 text-[#FF4D00]" />,
+                    button: "bg-[#FF4D00] hover:bg-[#E04400] shadow-orange-100",
+                    bg: "bg-orange-50",
+                    ring: "focus:ring-orange-100",
                 };
             case "info":
                 return {
@@ -120,7 +120,7 @@ export default function ConfirmationModal({
                 <div className="h-2 w-full flex">
                     <div className="h-full flex-1 bg-red-400/10" />
                     <div className="h-full flex-1 bg-orange-400/10" />
-                    <div className="h-full flex-1 bg-green-400/10" />
+                    <div className="h-full flex-1 bg-orange-400/10" />
                     <div className="h-full flex-1 bg-blue-400/10" />
                 </div>
             </div>

@@ -278,7 +278,7 @@ export default function QRCodetablesPage() {
               <label className="text-sm font-semibold text-gray-700">Number of Tables to Generate</label>
               {numTables === dbNumTables && (
                 <span className="text-[10px] font-bold text-gray-400 flex items-center gap-1">
-                  <CheckCircle className="w-3 h-3 text-green-500" /> Linked with DB
+                  <CheckCircle className="w-3 h-3 text-orange-500" /> Linked with DB
                 </span>
               )}
             </div>
@@ -292,7 +292,7 @@ export default function QRCodetablesPage() {
                 max={100}
                 value={numTables}
                 onChange={(e) => setNumTables(parseInt(e.target.value) || 0)}
-                className="pl-8 block w-full border border-gray-200 rounded-lg p-3 sm:text-sm focus:ring-green-500 focus:border-green-500"
+                className="pl-8 block w-full border border-gray-200 rounded-lg p-3 sm:text-sm focus:ring-orange-500 focus:border-orange-500"
               />
             </div>
           </div>
@@ -302,7 +302,7 @@ export default function QRCodetablesPage() {
           <button
             onClick={handleGenerate}
             disabled={isGenerating}
-            className="flex-1 bg-[#5d9e1e] hover:bg-[#4a8018] text-white font-bold py-4 rounded-xl shadow-lg shadow-green-600/20 transition-all flex items-center justify-center gap-2"
+            className="flex-1 bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-600/20 transition-all flex items-center justify-center gap-2"
           >
             {isGenerating ? 'Processing...' : (
               <>
@@ -319,8 +319,8 @@ export default function QRCodetablesPage() {
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           {/* Status Bar */}
           <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-green-700 font-medium">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+            <div className="flex items-center gap-2 text-orange-700 font-medium">
+              <CheckCircle className="w-5 h-5 text-orange-500" />
               {generatedTables.length} Tables Generated Successfully
             </div>
             <button

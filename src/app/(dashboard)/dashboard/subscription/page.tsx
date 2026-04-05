@@ -133,7 +133,7 @@ export default function SubscriptionPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin text-[#559701]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#FF4D00]" />
       </div>
     );
   }
@@ -149,7 +149,7 @@ export default function SubscriptionPage() {
             setError(null);
             fetchSubscriptionData();
           }}
-          className="px-6 py-2 bg-[#559701] text-white rounded-xl font-bold shadow-lg shadow-green-200"
+          className="px-6 py-2 bg-[#FF4D00] text-white rounded-xl font-bold shadow-lg shadow-orange-200"
         >
           Try Again
         </button>
@@ -171,12 +171,12 @@ export default function SubscriptionPage() {
           <p className="text-gray-500 mt-1 font-medium">Manage your plan, billing history, and resource limits</p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-sm font-bold text-green-600 bg-green-50 px-3 py-1.5 rounded-full border border-green-100">
+          <span className="text-sm font-bold text-orange-600 bg-orange-50 px-3 py-1.5 rounded-full border border-orange-100">
             Save 10% on Yearly
           </span>
           <Link
             href={`/dashboard/subscription/pricing`}
-            className="bg-gradient-to-r from-[#559701] to-[#6fb301] text-white px-6 py-2.5 rounded-xl font-bold shadow-lg shadow-green-200 hover:scale-[1.02] transition-all"
+            className="bg-gradient-to-r from-[#FF4D00] to-[#FF6B2B] text-white px-6 py-2.5 rounded-xl font-bold shadow-lg shadow-orange-200 hover:scale-[1.02] transition-all"
           >
             Upgrade to Premium
           </Link>
@@ -187,7 +187,7 @@ export default function SubscriptionPage() {
         <div className="space-y-8">
           {/* Current Plan Card */}
           <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110" />
 
             <div className="relative flex flex-col justify-between gap-6">
               {/* Header: Plan Name & Status */}
@@ -198,7 +198,7 @@ export default function SubscriptionPage() {
                     text-[10px] uppercase tracking-widest font-black px-3 py-1.5 rounded-lg border
                     ${(subscription?.status === 'canceled' || subscription?.status === 'cancelled')
                       ? "bg-red-50 text-red-600 border-red-100"
-                      : "bg-green-50 text-green-600 border-green-100"}
+                      : "bg-orange-50 text-orange-600 border-orange-100"}
                   `}>
                     {(subscription?.status === 'canceled' || subscription?.status === 'cancelled') ? "CANCELLED" : (subscription?.status || "Active")}
                   </span>
@@ -311,11 +311,11 @@ function UsageCard({ label, current, limit, icon, unit = "" }: UsageMetric) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-4 group hover:border-green-100 transition-all">
+    <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-4 group hover:border-orange-100 transition-all">
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-gray-50/80 rounded-xl group-hover:bg-green-50 transition-colors">
-            {React.cloneElement(icon as React.ReactElement<any>, { className: "w-5 h-5 text-gray-400 group-hover:text-green-600" })}
+          <div className="p-2.5 bg-gray-50/80 rounded-xl group-hover:bg-orange-50 transition-colors">
+            {React.cloneElement(icon as React.ReactElement<any>, { className: "w-5 h-5 text-gray-400 group-hover:text-orange-600" })}
           </div>
           <p className="font-bold text-gray-700">{label}</p>
         </div>
@@ -327,7 +327,7 @@ function UsageCard({ label, current, limit, icon, unit = "" }: UsageMetric) {
       <div className="space-y-2">
         <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
           <div
-            className={`h-full transition-all duration-1000 ease-out rounded-full ${isHigh ? 'bg-orange-400' : 'bg-green-500'}`}
+            className={`h-full transition-all duration-1000 ease-out rounded-full ${isHigh ? 'bg-orange-400' : 'bg-orange-500'}`}
             style={{ width: `${percentage}%` }}
           />
         </div>

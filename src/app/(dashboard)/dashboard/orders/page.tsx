@@ -145,14 +145,14 @@ export default function OrdersPage() {
       case "confirmed":
         return "bg-orange-100 text-orange-600 border-orange-200";
       case "preparing":
-        return "bg-green-100 text-green-700 border-green-200";
+        return "bg-orange-100 text-orange-700 border-orange-200";
       case "ready":
         return "bg-blue-100 text-blue-600 border-blue-200";
       case "served":
       case "delivered":
         return "bg-gray-800 text-white border-gray-800";
       case "paid":
-        return "bg-[#559701] text-white border-[#559701]";
+        return "bg-[#FF4D00] text-white border-[#FF4D00]";
       case "canceled":
       case "cancelled":
         return "bg-red-100 text-red-600 border-red-200";
@@ -175,11 +175,11 @@ export default function OrdersPage() {
     return (
       <div className="relative pl-8 sm:pl-8 pb-6 sm:pb-6 last:pb-0">
         {!isLast && (
-          <div className={`absolute left-[11px] sm:left-[11px] top-3 bottom-0 w-0.5 ${isCompleted ? 'bg-green-500' : 'bg-gray-200'}`}></div>
+          <div className={`absolute left-[11px] sm:left-[11px] top-3 bottom-0 w-0.5 ${isCompleted ? 'bg-orange-500' : 'bg-gray-200'}`}></div>
         )}
         <div className={`absolute left-0 top-1 w-6 sm:w-6 h-6 sm:h-6 rounded-full flex items-center justify-center border-2 z-10 transition-all
-          ${isCompleted ? 'bg-green-500 border-green-500' :
-            isCurrent ? 'bg-green-500 border-green-200 shadow-[0_0_0_4px_rgba(34,197,94,0.2)]' :
+          ${isCompleted ? 'bg-orange-500 border-orange-500' :
+            isCurrent ? 'bg-orange-500 border-orange-200 shadow-[0_0_0_4px_rgba(255,77,0,0.2)]' :
               'bg-white border-gray-200'
           }`}>
           {isCompleted && <CheckCircle2 className="w-3.5 sm:w-3.5 h-3.5 sm:h-3.5 text-white" />}
@@ -226,7 +226,7 @@ export default function OrdersPage() {
           <div>
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               <h1 className="text-base sm:text-xl font-bold text-gray-900">Active Orders</h1>
-              <span className="text-[10px] sm:text-xs font-bold text-green-600 bg-green-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-green-100">
+              <span className="text-[10px] sm:text-xs font-bold text-orange-600 bg-orange-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-orange-100">
                 {filteredOrders.length} Results
               </span>
             </div>
@@ -253,7 +253,7 @@ export default function OrdersPage() {
               onClick={() => setFilterStatus(status)}
               className={`flex items-center gap-1 sm:gap-1.5 px-5 sm:px-3 py-2 sm:py-1.5 rounded-full text-[13px] sm:text-[10px] font-bold uppercase tracking-wider shadow-sm transition-all flex-shrink-0
                 ${filterStatus === status
-                  ? 'bg-green-600 text-white shadow-md transform scale-105'
+                  ? 'bg-orange-600 text-white shadow-md transform scale-105'
                   : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}
               `}
             >
@@ -275,7 +275,7 @@ export default function OrdersPage() {
                   key={order.id}
                   onClick={() => setSelectedOrderId(order.id)}
                   className={`relative p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all cursor-pointer bg-white group hover:shadow-lg
-                    ${isActive ? "border-[#559701] shadow-md ring-1 ring-[#559701]/20" : "border-gray-100 hover:border-[#559701]/50"}
+                    ${isActive ? "border-[#FF4D00] shadow-md ring-1 ring-[#FF4D00]/20" : "border-gray-100 hover:border-[#FF4D00]/50"}
                   `}
                 >
 
@@ -334,8 +334,8 @@ export default function OrdersPage() {
                         onClick={() => setCurrentPage(page)}
                         className={`w-6 sm:w-7 h-6 sm:h-7 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-bold transition-all mx-0.5
                                             ${currentPage === page
-                            ? 'bg-[#559701] text-white shadow-md'
-                            : 'text-gray-500 hover:bg-white hover:text-[#559701]'}
+                            ? 'bg-[#FF4D00] text-white shadow-md'
+                            : 'text-gray-500 hover:bg-white hover:text-[#FF4D00]'}
                                         `}
                       >
                         {page}
@@ -367,7 +367,7 @@ export default function OrdersPage() {
 
       {/* RIGHT PANEL: Advanced Order Detail */}
       <div className={`
-        fixed md:relative inset-y-0 sm:mt-0 mt-[56px] right-0 z-40 md:z-11111
+        fixed md:relative inset-y-0 sm:mt-0 mt-[56px] right-0 z-30 md:z-30
         w-full sm:w-[85%] md:w-[350px] lg:w-[400px] 
         bg-white border-l border-gray-200 flex flex-col shadow-xl 
         transition-transform duration-300 ease-in-out
@@ -412,7 +412,7 @@ export default function OrdersPage() {
                 </div>
                 <div>
                   <span className="text-[11px] sm:text-[10px] text-gray-400 font-bold uppercase tracking-wider block mb-1 sm:mb-1">Total</span>
-                  <span className="text-sm sm:text-sm font-bold text-green-600">{selectedOrder.total.toFixed(2)} DH</span>
+                  <span className="text-sm sm:text-sm font-bold text-orange-600">{selectedOrder.total.toFixed(2)} DH</span>
                 </div>
               </div>
             </div>
@@ -530,7 +530,7 @@ export default function OrdersPage() {
                   className={`w-full py-3.5 sm:py-3 rounded-xl sm:rounded-xl font-bold text-sm sm:text-sm shadow-lg flex items-center justify-center gap-2 sm:gap-2 transition-all active:scale-[0.98]
                   ${(selectedOrder.status === 'PAID' || selectedOrder.status === 'CANCELLED')
                       ? 'bg-gray-100 text-gray-400 shadow-none cursor-not-allowed hidden'
-                      : 'bg-[#559701] hover:bg-[#4a8501] text-white shadow-[#559701]/20'}`}
+                      : 'bg-[#FF4D00] hover:bg-[#E04400] text-white shadow-[#FF4D00]/20'}`}
                 >
                   <CheckCircle2 className="w-5 sm:w-5 h-5 sm:h-5" />
                   {selectedOrder.status === 'SERVED' ? 'Confirm Payment' :

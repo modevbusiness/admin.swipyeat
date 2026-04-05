@@ -43,7 +43,7 @@ export default function SecurityNoticeModal({ isOpen, tempCode, onSecureSave, st
                     <div className="text-center">
                         <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Temporary Credential</p>
                         <div className="relative group">
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#559701] to-emerald-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D00] to-orange-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity" />
                             <div className="relative bg-[#111] border border-gray-700 rounded-2xl p-8 flex items-center justify-center">
                                 <span className="font-mono text-3xl text-white font-bold tracking-wider select-all break-all text-center">
                                     {tempCode}
@@ -56,8 +56,8 @@ export default function SecurityNoticeModal({ isOpen, tempCode, onSecureSave, st
                         <button
                             onClick={handleCopy}
                             className={`w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${copied
-                                ? "bg-green-500 text-white shadow-lg shadow-green-500/20"
-                                : "bg-[#559701] hover:bg-[#4a8001] text-white shadow-lg shadow-[#559701]/20 transform hover:scale-[1.02] active:scale-[0.98]"
+                                ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
+                                : "bg-[#FF4D00] hover:bg-[#E04400] text-white shadow-lg shadow-[#FF4D00]/20 transform hover:scale-[1.02] active:scale-[0.98]"
                                 }`}
                         >
                             {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
