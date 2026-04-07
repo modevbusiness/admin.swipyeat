@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    middlewarePrefetch: "strict",
+    proxyPrefetch: "strict",
   },
 
   images: {
