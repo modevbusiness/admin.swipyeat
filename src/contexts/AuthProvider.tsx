@@ -263,7 +263,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     },
                     app_metadata: {},
                     aud: 'authenticated',
-                    created_at: clerkUser.createdAt.toString(),
+                    created_at: clerkUser.createdAt?.toString() || new Date().toISOString(),
                 } as unknown as User;
 
                 await loadUserData(authUser);
