@@ -11,7 +11,8 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         if (!loading && !user) {
             const landingUrl = process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000';
-            window.location.href = `${landingUrl}/sign-in`;
+            const currentUrl = encodeURIComponent(window.location.href);
+            window.location.href = `${landingUrl}/sign-in?redirect_url=${currentUrl}`;
         }
     }, [user, loading]);
 
