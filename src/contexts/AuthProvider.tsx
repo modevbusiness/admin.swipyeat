@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { useUser as useClerkUser, useAuth as useClerkAuth } from "@clerk/nextjs";
 import type { User } from "@supabase/supabase-js";
 
 // Types
@@ -108,12 +109,15 @@ function withTimeout<T>(promise: Promise<T>, ms: number, errorMessage: string): 
 
 // Provider Component
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+    const { user: clerkUser, isLoaded: clerkLoaded } = useClerkUser();
+    
     const [user, setUser] = useState<User | null>(null);
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [initialized, setInitialized] = useState(false);
+    // initialized is no longer required with clerk
+
 
     // Create supabase client once with useMemo
     const supabase = useMemo(() => createClient(), []);
@@ -231,78 +235,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.log('[AUTH PROVIDER] loadUserData COMPLETE');
     }, [fetchProfile, fetchRestaurant]);
 
-    // Main auth refresh function - uses getSession (no network call)
     const refreshAuth = useCallback(async () => {
-        console.log('[AUTH PROVIDER] refreshAuth started');
-        try {
-            setError(null);
+        console.log('[AUTH PROVIDER] refreshAuth started (no-op as Clerk handles this)');
+    }, []);
 
-            console.log('[AUTH PROVIDER] Calling getSession...');
-            const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-
-            if (sessionError) {
-                console.error("[AUTH PROVIDER] Session error:", sessionError);
-                setUser(null);
-                setProfile(null);
-                setRestaurant(null);
-                setLoading(false);
-                return;
-            }
-
-            if (!session?.user) {
-                console.log('[AUTH PROVIDER] No session/user found');
-                setUser(null);
-                setProfile(null);
-                setRestaurant(null);
-                setLoading(false);
-                return;
-            }
-
-            console.log('[AUTH PROVIDER] Session found, user:', session.user.id);
-            await loadUserData(session.user);
-            console.log('[AUTH PROVIDER] refreshAuth completed successfully');
-        } catch (err) {
-            console.error("[AUTH PROVIDER] Error refreshing auth:", err);
-            setError("Failed to load authentication data");
-        } finally {
-            setLoading(false);
-        }
-    }, [supabase, loadUserData]);
-
-    // Initialize auth on mount
+    // Sync with Clerk auth state
     useEffect(() => {
-        if (initialized) return;
+        if (!clerkLoaded) return;
 
-        console.log('[AUTH PROVIDER] Initializing...');
-        setInitialized(true);
-
-        // Get initial session
-        refreshAuth();
-
-        // Listen for auth changes
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                console.log('[AUTH PROVIDER] onAuthStateChange event:', event);
-
-                if (event === "SIGNED_IN" && session?.user) {
-                    setLoading(true);
-                    await loadUserData(session.user);
-                    setLoading(false);
-                } else if (event === "TOKEN_REFRESHED" && session?.user) {
-                    setUser(session.user);
-                } else if (event === "SIGNED_OUT") {
+        console.log('[AUTH PROVIDER] Syncing Clerk state, user:', clerkUser?.id);
+        const syncUser = async () => {
+            try {
+                if (!clerkUser) {
                     setUser(null);
                     setProfile(null);
                     setRestaurant(null);
-                    setLoading(false);
+                    return;
                 }
-            }
-        );
 
-        return () => {
-            subscription.unsubscribe();
+                // Mock Supabase User object from Clerk User
+                const authUser = {
+                    id: clerkUser.id,
+                    email: clerkUser.primaryEmailAddress?.emailAddress,
+                    user_metadata: {
+                        name: clerkUser.fullName,
+                        avatar_url: clerkUser.imageUrl,
+                    },
+                    app_metadata: {},
+                    aud: 'authenticated',
+                    created_at: clerkUser.createdAt.toString(),
+                } as unknown as User;
+
+                await loadUserData(authUser);
+            } catch (err) {
+                console.error("[AUTH PROVIDER] Error syncing clerk user:", err);
+                setError("Failed to load authentication data");
+            } finally {
+                setLoading(false);
+            }
         };
-    }, [initialized, refreshAuth, supabase.auth, loadUserData]);
+
+        syncUser();
+    }, [clerkUser, clerkLoaded, loadUserData]);
 
     const value: AuthContextType = {
         user,

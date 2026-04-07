@@ -42,5 +42,6 @@ export async function logoutAction() {
     console.log('[AUTH ACTION] Signed out successfully')
 
     // Return success for client to do hard redirect
-    return { success: true, redirectUrl: '/login' };
+    const landingUrl = process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000';
+    return { success: true, redirectUrl: `${landingUrl}/sign-in` };
 }

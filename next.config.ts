@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    middlewarePrefetch: "strict",
+  },
+
   images: {
     remotePatterns: [
       {
@@ -10,6 +14,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "nsqimhnrvgkhdetxkflr.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
       },
     ],
   },

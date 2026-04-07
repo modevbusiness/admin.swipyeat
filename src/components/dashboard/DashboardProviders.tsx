@@ -1,19 +1,19 @@
 "use client";
 
 import { AuthProvider, useAuth } from "@/contexts/AuthProvider";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
 
 function AuthGuard({ children }: { children: React.ReactNode }) {
     const { user, loading } = useAuth();
-    const router = useRouter();
+    // useRouter is not needed anymore
 
     useEffect(() => {
         if (!loading && !user) {
-            router.replace("/login");
+            const landingUrl = process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000';
+            window.location.href = `${landingUrl}/sign-in`;
         }
-    }, [user, loading, router]);
+    }, [user, loading]);
 
     // Show loading spinner while checking auth
     if (loading) {
