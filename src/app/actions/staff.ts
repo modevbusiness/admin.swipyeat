@@ -3,6 +3,32 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
+import { SignJWT } from "jose";
+
+export async function generateStaffInviteAction(email: string, role: string, validityHours: number, restaurantId: string) {
+    try {
+        const secret = process.env.JWT_SECRET;
+        if (!secret) {
+            throw new Error("JWT_SECRET is not configured");
+        }
+
+        const secretKey = new TextEncoder().encode(secret);
+
+        const token = await new SignJWT({ email, role, restaurantId })
+            .setProtectedHeader({ alg: "HS256" })
+            .setExpirationTime(`${validityHours}h`)
+            .sign(secretKey);
+
+        // Uses the domain specified by the user
+        const link = `https://swipyeat.com/invite/${token}`;
+        
+        return { success: true, link };
+    } catch (error: any) {
+        console.error("Invite generation error:", error);
+        return { success: false, error: error.message };
+    }
+}
+
 
 export async function createStaffAction(formData: any, restaurantId: string) {
     try {

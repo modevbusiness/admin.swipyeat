@@ -10,8 +10,8 @@ import AddStaffModal from "@/components/staff/AddStaffModal";
 import SecurityNoticeModal from "@/components/staff/SecurityNoticeModal";
 import CredentialVerificationModal from "@/components/staff/CredentialVerificationModal";
 import UpdatePasswordModal from "@/components/staff/UpdatePasswordModal";
-import { createStaffAction } from "@/app/actions/staff";
 import { useRestaurant } from "@/contexts/AuthProvider";
+
 
 export default function StaffPage() {
   const router = useRouter();
@@ -58,39 +58,7 @@ export default function StaffPage() {
     }
   };
 
-  const handleAddStaff = async (formData: any) => {
-    if (!restaurant?.id) {
-      alert("Restaurant data is still loading. Please try again in a moment.");
-      return;
-    }
 
-    setIsSubmitting(true);
-    try {
-      const result = await createStaffAction(formData, restaurant.id);
-
-      if (!result.success) {
-        throw new Error(result.error);
-      }
-
-      // Check if we got an ID back (should happen with new action)
-      if (result.data?.id) {
-        setIsModalOpen(false);
-        // Removed: Automatic temp credential flow on creation
-        // setTempCredential({ ... });
-        // setModalStep("security");
-      } else {
-        // Fallback if no ID (old behavior)
-        setIsModalOpen(false);
-      }
-
-      fetchStaff();
-    } catch (error: any) {
-      console.error("Error adding staff:", error);
-      alert(`Failed to add staff member: ${error.message}`);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const handleStartResetFlow = (userId: string, email: string, name: string, tempCode: string) => {
     setTempCredential({
@@ -208,9 +176,8 @@ export default function StaffPage() {
       <AddStaffModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onSubmit={handleAddStaff}
-        isLoading={isSubmitting}
       />
+
 
       {/* Security Flow Modals */}
       {tempCredential && (
