@@ -39,7 +39,8 @@ interface Restaurant {
     created_at: string;
     updated_at: string;
     subscription?: {
-        plan_type: "free_trial" | "pro";
+        plan_type: "free_trial" | "pro" | "unlimited";
+        plan_name: string;
         status: "active" | "canceled" | "expired" | "suspended";
         is_current: boolean;
         max_tables?: number;
@@ -167,7 +168,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                             is_current,
                             status,
                             ends_at,
-                        subscription_plans(plan_type, max_tables, max_menu_items)
+                        subscription_plans(plan_type, name, max_tables, max_menu_items)
                         )
                     `)
                     .eq("id", restaurantId)
@@ -194,6 +195,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
                     subscription = {
                         plan_type: planInfo?.plan_type || "free_trial",
+                        plan_name: planInfo?.name || "Free Trial",
                         status: currentSub.status,
                         is_current: currentSub.is_current,
                         max_tables: planInfo?.max_tables,
@@ -236,8 +238,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }, [fetchProfile, fetchRestaurant]);
 
     const refreshAuth = useCallback(async () => {
-        console.log('[AUTH PROVIDER] refreshAuth started (no-op as Clerk handles this)');
-    }, []);
+        console.log('[AUTH PROVIDER] refreshAuth triggered');
+        if (!clerkUser) return;
+        try {
+            const authUser = {
+                id: clerkUser.id,
+                email: clerkUser.primaryEmailAddress?.emailAddress,
+                user_metadata: {
+                    name: clerkUser.fullName,
+                    avatar_url: clerkUser.imageUrl,
+                },
+                app_metadata: {},
+                aud: 'authenticated',
+                created_at: clerkUser.createdAt?.toString() || new Date().toISOString(),
+            } as unknown as User;
+
+            await loadUserData(authUser);
+            console.log('[AUTH PROVIDER] refreshAuth COMPLETE');
+        } catch (err) {
+            console.error('[AUTH PROVIDER] refreshAuth FAILED:', err);
+        }
+    }, [clerkUser, loadUserData]);
 
     // Sync with Clerk auth state
     useEffect(() => {
@@ -277,6 +298,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         syncUser();
     }, [clerkUser, clerkLoaded, loadUserData]);
+
+    // Realtime subscription on subscriptions table
+    useEffect(() => {
+        if (!restaurant?.id) return;
+
+        const channel = supabase
+            .channel('subscription-changes')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table: 'subscriptions',
+                    filter: `restaurant_id=eq.${restaurant.id}`,
+                },
+                (payload) => {
+                    console.log('[AUTH PROVIDER] Realtime subscription change detected:', payload.eventType);
+                    // Re-fetch restaurant data to get updated subscription
+                    if (profile?.restaurant_id) {
+                        fetchRestaurant(profile.restaurant_id).then((data) => {
+                            if (data) setRestaurant(data);
+                        });
+                    }
+                }
+            )
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, [restaurant?.id, profile?.restaurant_id, supabase, fetchRestaurant]);
 
     const value: AuthContextType = {
         user,

@@ -227,13 +227,15 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                                         text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded-md border
                                         ${(restaurant.subscription.status === 'canceled' || restaurant.subscription.status === 'suspended')
                                             ? "bg-red-500 text-white border-red-600"
-                                            : (restaurant.subscription.plan_type === 'pro')
-                                                ? "bg-orange-50 text-orange-600 border-orange-100"
-                                                : "bg-blue-50 text-blue-600 border-blue-100"}
+                                            : restaurant.subscription.plan_type === 'unlimited'
+                                                ? "bg-violet-50 text-violet-600 border-violet-100"
+                                                : restaurant.subscription.plan_type === 'pro'
+                                                    ? "bg-orange-50 text-orange-600 border-orange-100"
+                                                    : "bg-blue-50 text-blue-600 border-blue-100"}
                                     `}>
                                         {(restaurant.subscription.status === 'canceled') ? 'CANCELLED' :
                                             (restaurant.subscription.status === 'suspended') ? 'SUSPENDED' :
-                                                (restaurant.subscription.plan_type === 'pro' ? 'Professional' : 'Free Trial')}
+                                                restaurant.subscription.plan_name || restaurant.subscription.plan_type.replace('_', ' ')}
                                     </span>
                                 </div>
                             )}
