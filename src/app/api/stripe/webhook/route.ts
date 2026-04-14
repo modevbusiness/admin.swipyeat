@@ -54,6 +54,11 @@ export async function POST(request: NextRequest) {
               .eq("restaurant_id", restaurantId)
               .eq("is_current", true);
 
+            // Fetch Stripe subscription to get ends_at
+            const stripeSubscription = await stripe.subscriptions.retrieve(
+              session.subscription as string
+            ) as any;
+
             // Create the new subscription
             await supabaseAdmin.from("subscriptions").insert({
               restaurant_id: restaurantId,
@@ -61,7 +66,8 @@ export async function POST(request: NextRequest) {
               status: "active",
               is_current: true,
               billing_cycle: billingCycle,
-              started_at: new Date().toISOString(),
+              started_at: new Date(stripeSubscription.current_period_start * 1000).toISOString(),
+              ends_at: new Date(stripeSubscription.current_period_end * 1000).toISOString(),
               auto_renew: true,
             });
           }
